@@ -8,5 +8,10 @@ export class ToDoListTask {
         <input ${this.isDone ? "checked" : ""} class="toDoApp__container--list--item--checkbox"
          type="checkbox">${this.task}`;
     }
+    updateHtml() {
+        this.html = `
+            <input ${this.isDone ? "checked" : ""} class="toDoApp__container--list--item--checkbox"
+             type="checkbox">${this.task}`;
+    }
 
 }

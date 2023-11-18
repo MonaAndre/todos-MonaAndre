@@ -12,8 +12,6 @@ toDoList.init();
 
 
 
-
-
 // create en array wirh tasks and chechedStatus
 let toDoListArray = [];
 // create class ToDolistTask to create new array item
@@ -120,35 +118,27 @@ footer.appendChild(newTaskContainer);
 
 // adding the checked unchecked function för tasks
 
-let activeTab = "allTasks";
-const listHtml = document.querySelector(".tasksList");
-
-toDoList.drawTasks(activeTab);
+toDoList.drawTasks();
 // for (let i = 0; i < toDoList.list.length; i++) {
 //     createHtmlForToDoList(toDoList.list[i], todolist);
 // }
 
 allTasksTrigger.addEventListener("click", () => {
-    activeTab = "allTasks";
-    toDoList.drawTasks(activeTab);
+    toDoList.toggleActiveTab();
+    toDoList.drawTasks();
+    console.log("allTasksTrigger");
 })
 doneTrigger.addEventListener("click", () => {
-    activeTab = "doneTasks";
-    toDoList.drawTasks(activeTab);
+    toDoList.toggleActiveTab();
+    toDoList.drawTasks();
+    console.log("doneTrigger");
 })
 // const doneTrigger= document.querySelector("")
 // if(task.checkStatus) {
 
-const checkboxes = document.querySelectorAll(".toDoApp__container--list--item--checkbox");
-console.log(checkboxes);
-checkboxes.forEach((checkbox) => {
-    console.log(checkbox);
-    checkbox.addEventListener("change", (e) => {
-        const todoId = e.target.parentElement.id;
-        toDoList.updateStatus(e.target.checked, todoId);
 
-    })
-})
+
+//dra li upp och ner??
 
 // }
 
