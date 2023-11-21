@@ -1,3 +1,12 @@
+@import "/src/scss/libs/dragula.scss";
+//hitta rätt sätt att import andra scss filer i main scss
+
+$text-color: rgb(237, 191, 198);
+$bg-color: rgb(38, 12, 26);
+$accent-color: rgb(175, 141, 134);
+$primery-drown: rgb(95, 72, 66);
+
+//normilize
 *,
 *::after,
 *::before {
@@ -5,84 +14,104 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
-  // position: relative;
+  background-color: $bg-color;
+  color: $text-color;
 }
-.container {
+
+.app {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   font-family: sans-serif;
   position: relative;
-  min-height: 100vh;
   &__heading {
-    margin-top: 3.5rem;
+    margin: 3.6rem;
   }
-  .toDoApp__container {
+
+  .to-do-app {
     display: flex;
     flex-direction: column;
-    border: 0.1rem solid black;
+    border: 0.1rem solid $accent-color;
     min-width: 90vw;
-
-    &__menu--box {
+    min-height: 100px;
+    background-color: $primery-drown;
+    &__menu-box {
       margin: 1rem;
       display: flex;
       flex-direction: row;
       list-style: none;
       justify-content: space-around;
     }
-    &--list {
-      margin:0 1.8rem;
-      &--item {
-        border: 0.1rem solid black;
-        padding: 0.7rem;
-        margin: 0.7rem auto;
-        position: relative;
-        &--checkbox {
-          margin: 0 0.7rem;
-          position: absolute;
-          right: 0;
-        }
-      }
+    &__menu-item {
+      margin: 0 1.8rem;
+      padding: .4rem;
+      border: 0.2rem solid $primery-drown;
+      cursor: pointer;
+    }
+    &__menu-item:hover {
+      background-color: $accent-color;
+    }
+    &__menu-item:active {
+      background-color: $accent-color;
+      color: white;
+    }
+    &__list {
+      padding-left: 1.7rem;
+      min-height: 100vh;
+    }
+    &__list-item {
+      background-color: $accent-color;
+      padding: 0.7rem;
+      margin: 0.7rem auto;
+      cursor: pointer;
+    }
+    &__list-checkbox {
+      margin: 0 0.7rem;
+      cursor: pointer;
     }
   }
+
   .btn {
-    background-color: rgb(251, 250, 248);
+    background-color: $bg-color;
+    color: $text-color;
     max-width: 4rem;
     padding: 1rem;
     margin: 1rem;
     border-radius: 5px;
+    cursor: pointer;
   }
 }
 
-.newTask__container {
-  background-color: rgb(181, 179, 179);
-  border: 0.3px solid black;
-  display: flex;
-  flex-wrap: wrap;
-  &--heading {
-    margin: 10px auto;
-  }
-
-  &--input {
-    min-width: 90%;
-    margin: auto;
-  }
-}
-
-.footer {
+.form {
   position: sticky;
   bottom: 0;
   min-width: 100vw;
+  &__wrapper {
+    background-color: $primery-drown;
+    border: 0.3px solid black;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__input {
+    width: 90%;
+    margin: auto;
+    background-color: $text-color;
+    cursor: pointer;
+  }
+  &__heading {
+    margin: 10px auto;
+  }
 }
 
-.container {
-  // position: relative;
+.gu-mirror {
+  font-family: sans-serif;
+  list-style: none;
 }
 
-ol{
-width: 100%;
+// gjort- Använda mobile first 
+// - Använda minst en breakpoint
+// gjort - Använda scss (nästling, variabler et.c.)
+// - Använda mixins för att göra er responsitivitet
 
-}
+//Mixins , adoptiv, bootstrap kvar

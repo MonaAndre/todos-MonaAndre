@@ -9,30 +9,49 @@
 </head>
 
 <body>
-  <!-- <section class="container">
-    
-      <h1 class="container__heading">To Do List</h1>
-      <article class="toDoApp__container">
+  <!-- gammal struktur fel BEM classer -->
+  <!-- <div id="app">
+    <h1 class="container__heading">To Do List</h1>
+    <article class="toDoApp__container">
       <nav class="toDoApp__container__menu">
-        <ul class="toDoApp__container__menu--box">
-          <li class="toDoApp__container__menu__box-item">Tasks to do</li>
-          <li class="toDoApp__container__menu__box-item">Done tasks</li>
-        </ul>
+        <ul class="toDoApp__container__menu--box"></ul>
       </nav>
-
-      <ol class="toDoApp__container--list">
-        <li class="toDoApp__container--list--item"><input class="toDoApp__container--list--item--checkbox" type="checkbox">to do 1</li>
-        <li class="toDoApp__container--list--item"><input class="toDoApp__container--list--item--checkbox" type="checkbox">to do 2</li>
-        <li class="toDoApp__container--list--item"><input class="toDoApp__container--list--item--checkbox" type="checkbox">to do 3</li>
-      </ol>
-      <button class="btn" id="createTask">Add new task</button>
+      <ol class="tasksList toDoApp__container--list"></ol>
     </article>
-  </section> -->
+    <footer class="footer">
+      <div class="newTask__container">
+        <h3 class="newTask__container--heading">Add new task:</h3>
+        <input id="task-input" type="text" class="newTask__container--input">
+        <button id="cancel" class="btn">Cancel</button>
+        <button id="save" class="btn">Save</button>
+      </div>
+    </footer>
+  </div> -->
 
-  <div id="app">
-  <h1 class="container__heading">To Do List</h1>
-  <ol class="tasksList"></ol>
+
+  <!-- Nya BEM classer, ska ändra form section? -->
+  <div class="app" id="app">
+    <h1 class="app__heading">To Do List</h1>
+    <section class="to-do-app">
+      <header class="to-do-app__header header">
+        <nav class="to-do-app__menu">
+          <ul class="to-do-app__menu-box"></ul>
+        </nav>
+      </header>
+      <main class=" to-do-app__main">
+        <ol class="to-do-app__list"></ol>
+      </main>
+    </section>
+    <section class="form">
+      <div class="form__wrapper">
+        <h3 class="form__heading">Add new task:</h3>
+        <input class="form__input" id="task-input" type="text">
+        <button class="btn form__btn-save" id="cancel">Cancel</button>
+        <button class="btn form__btn-cancel" id="save">Save</button>
+      </div>
+    </section>
   </div>
+
   <script type="module" src="./src/js/main.js"></script>
 </body>
 
