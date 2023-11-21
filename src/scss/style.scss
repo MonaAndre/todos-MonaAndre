@@ -1,4 +1,6 @@
 @import "/src/scss/libs/dragula.scss";
+@import "bootstrap/scss/bootstrap.scss";
+@import "bootstrap-icons/font/bootstrap-icons.css";
 //hitta rätt sätt att import andra scss filer i main scss
 
 $text-color: rgb(237, 191, 198);
@@ -6,112 +8,279 @@ $bg-color: rgb(38, 12, 26);
 $accent-color: rgb(175, 141, 134);
 $primery-drown: rgb(95, 72, 66);
 
+// Mixins
+@mixin tablet {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
 //normilize
+
 *,
 *::after,
 *::before {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   box-sizing: border-box;
 }
-body {
-  background-color: $bg-color;
-  color: $text-color;
+ol,
+ul {
+  padding: 0px;
 }
+// body {
+//   background-color: $bg-color;
+//   color: $text-color;
+// }
 
-.app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: sans-serif;
-  position: relative;
-  &__heading {
-    margin: 3.6rem;
-  }
+// .app {
+//   // display: flex;
+//   // flex-direction: column;
+//   // align-items: center;
+//   // font-family: sans-serif;
+//   // position: relative;
+//   &__heading {
+//     margin: 3.6rem;
+//   }
 
-  .to-do-app {
-    display: flex;
-    flex-direction: column;
-    border: 0.1rem solid $accent-color;
-    min-width: 90vw;
-    min-height: 100px;
-    background-color: $primery-drown;
-    &__menu-box {
-      margin: 1rem;
-      display: flex;
-      flex-direction: row;
-      list-style: none;
-      justify-content: space-around;
-    }
-    &__menu-item {
-      margin: 0 1.8rem;
-      padding: .4rem;
-      border: 0.2rem solid $primery-drown;
-      cursor: pointer;
-    }
-    &__menu-item:hover {
-      background-color: $accent-color;
-    }
-    &__menu-item:active {
-      background-color: $accent-color;
-      color: white;
-    }
-    &__list {
-      padding-left: 1.7rem;
-      min-height: 100vh;
-    }
-    &__list-item {
-      background-color: $accent-color;
-      padding: 0.7rem;
-      margin: 0.7rem auto;
-      cursor: pointer;
-    }
-    &__list-checkbox {
-      margin: 0 0.7rem;
-      cursor: pointer;
-    }
-  }
+//   .to-do-app {
+//     display: flex;
+//     flex-direction: column;
+//     @include tablet {
+//       flex-direction: row;
+//       justify-content: space-around; // det som står i {} blir content i själva mixin // medie-mixin
+//     }
 
-  .btn {
-    background-color: $bg-color;
-    color: $text-color;
-    max-width: 4rem;
-    padding: 1rem;
-    margin: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-}
+//     border: 0.1rem solid $accent-color;
+//     min-width: 90vw;
+//     min-height: 100px;
+//     background-color: $primery-drown;
+//     &__menu-box {
+//       margin: 1rem;
+//       display: flex;
+//       flex-direction: row;
+//       list-style: none;
+//       justify-content: space-around;
+//     }
+//     &__menu-item {
+//       margin: 0 1.8rem;
+//       padding: 0.4rem;
+//       border: 0.2rem solid $primery-drown;
+//       cursor: pointer;
+//     }
+//     &__menu-item:hover {
+//       background-color: $accent-color;
+//     }
+//     &__menu-item:active {
+//       background-color: $accent-color;
+//       color: white;
+//     }
+//     &__list {
+//       padding-left: 1.7rem;
+//       min-height: 100vh;
+//     }
+//     &__list-item {
+//       background-color: $accent-color;
+//       padding: 0.7rem;
+//       margin: 0.7rem auto;
+//       cursor: pointer;
+//     }
+//     &__list-checkbox {
+//       margin: 0 0.7rem;
+//       cursor: pointer;
+//     }
+//   }
 
-.form {
-  position: sticky;
-  bottom: 0;
-  min-width: 100vw;
-  &__wrapper {
-    background-color: $primery-drown;
-    border: 0.3px solid black;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  &__input {
-    width: 90%;
-    margin: auto;
-    background-color: $text-color;
-    cursor: pointer;
-  }
-  &__heading {
-    margin: 10px auto;
-  }
-}
+//   .list-item__ .btn {
+//     background-color: $bg-color;
+//     color: $text-color;
+//     max-width: 4rem;
+//     padding: 1rem;
+//     margin: 1rem;
+//     border-radius: 5px;
+//     cursor: pointer;
+//   }
+// }
 
-.gu-mirror {
-  font-family: sans-serif;
-  list-style: none;
-}
+// .form {
+//   position: sticky;
+//   bottom: 0;
+//   min-width: 100vw;
+//   @include tablet {
 
-// gjort- Använda mobile first 
+//     display: flex;
+//     flex-direction: column;
+//    position: relative;
+//     max-width: 300px; // det som står i {} blir content i själva mixin // medie-mixin
+//   }
+//   &__wrapper {
+//     @include tablet {
+//        background-color: white;
+//       display: flex;
+//       flex-direction: column;
+//      position: relative;
+//       max-width: 300px; // det som står i {} blir content i själva mixin // medie-mixin
+//     }
+
+//     background-color: $primery-drown;
+//     border: 0.3px solid black;
+//     display: flex;
+//     flex-wrap: wrap;
+//   }
+//   &__input {
+//     width: 90%;
+//     margin: auto;
+//     background-color: $text-color;
+//     cursor: pointer;
+//     @include tablet {
+//       width: 50vw; // det som står i {} blir content i själva mixin // medie-mixin
+//     }
+//   }
+//   &__heading {
+//     margin: 10px auto;
+//   }
+// }
+
+// .gu-mirror {
+//   font-family: sans-serif;
+//   list-style: none;
+// }
+
+// gjort- Använda mobile first
 // - Använda minst en breakpoint
 // gjort - Använda scss (nästling, variabler et.c.)
 // - Använda mixins för att göra er responsitivitet
 
 //Mixins , adoptiv, bootstrap kvar
+
+.app {
+  &__heading {
+    position: relative;
+    text-align: center;
+    // margin-top: 3rem;
+    // margin-bottom: 1rem;
+    // margin-left: auto;
+    // margin-right: auto;
+    @include tablet() {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+  }
+
+  .to-do-app {
+    // min-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    @include tablet() {
+      flex-direction: row;
+      gap: 20px;
+    }
+
+    &__header {
+    }
+    &__menu {
+     
+    }
+    &__menu-box {
+      background-color: $accent-color;
+      min-width: 95vw;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: space-around;
+      list-style: none;
+
+      @include tablet() {
+        // min-width: 90vw;
+      }
+    }
+    &__menu-item {
+      padding: 1.5rem;
+      background-color: $accent-color;
+      margin: 0.7rem auto;
+      cursor: pointer;
+    }
+    &__menu-item:hover {
+      background-color: $text-color;
+    }
+    &__main {
+    }
+    &__list {
+      padding: 15px;
+      min-height: 70vh;
+      min-width: 300px;
+      list-style: decimal;
+      @include tablet() {
+        min-height: 0vh;
+        max-width: 50vw;
+      }
+    }
+    &__list-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      @include tablet() {
+      }
+    }
+
+    // &__form{
+
+    // }
+  }
+  .form {
+    text-align: center;
+    position: sticky;
+    bottom: 0;
+    
+    @include tablet() {
+      position: static;
+      display: flex;
+      flex-direction: column;
+    }
+    &__wrapper {
+      @include tablet() {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    &__heading {
+    }
+
+    &__input {
+      min-width: 90vw;
+      @include tablet() {
+        min-width: 40vw;
+      }
+    }
+    &__btn-save {
+    }
+    &__btn-cancel {
+      color: red;
+    }
+  }
+}
+
+.list-item__text {
+  max-width: 65vw;
+}
+.gu-mirror {
+  max-width: 300px;
+  display: flex;
+  justify-content: space-between;
+  font-family: sans-serif;
+  list-style: none;
+}
+// .list-item__button{
+//   width: 30px;
+//   height: 30px;
+
+// }
+
+// .list-item__button--delete{
+//   width: 50px;
+//   height: 50px;
+// }

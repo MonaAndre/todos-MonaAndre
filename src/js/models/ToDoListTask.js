@@ -4,8 +4,8 @@ export class ToDoListTask {
         this.task = task;
         this.id = Date.now();
         this.html = ` 
-        <input class="to-do-app__list-checkbox"
-         type="checkbox">${this.task}`;
+        <input class="list-item__checkbox"
+         type="checkbox"><p class="list-item__text">${task}</p><i class="bi bi-trash list-item__button--delete"></i>`;
     }
 }
 //isDone som ska visas i checkbox i webbläsare
