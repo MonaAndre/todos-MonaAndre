@@ -97,8 +97,9 @@ export class ToDoList {
      <i class="bi bi-trash list-item__button--delete"></i>`;
     } else {
       task.html = `
-      <input  class="list-item__checkbox"
-         type="checkbox"><p class="list-item__text">${task.task}</p><i class="bi bi-trash list-item__button--delete"></i>`;
+     <input class="list-item__checkbox" type="checkbox">
+     <p class="list-item__text">${task.task}</p>
+     <i class="bi bi-trash list-item__button--delete"></i>`;
     }
     return task;
   }
@@ -161,13 +162,15 @@ export class ToDoList {
       });
     }
   }
+
+  // on cklick på trash icon en to do kan  man ta bort den från lista (splice från array)
   removeTodoById(todoId) {
     const removeToDoFromList = this.#list.findIndex((todo) => todo.id == todoId);
     const removeToDoFromDoneList = this.#doneList.findIndex(
       (todo) => todo.id == todoId
     );
     if ((removeToDoFromList || removeToDoFromList == 0) && removeToDoFromList !== -1) {
-      this.#list.splice(removeToDoFromList, 1); //splice retur en ny array och därför måste man ta det som står på index 0 och få bara object utan extra array
+      this.#list.splice(removeToDoFromList, 1); //splice retur en ny array och därför måste man ta det som står på index 0 och få bara object som står på 0-index utan extra array
 
       //när i en true list finns false task
     } else if ((removeToDoFromDoneList || removeToDoFromDoneList == 0) && removeToDoFromDoneList !== -1) {

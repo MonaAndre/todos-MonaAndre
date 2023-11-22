@@ -1,0 +1,17 @@
+// Mixins
+@mixin tablet {
+  @media screen and (min-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-width) {
+    @content;
+  }
+}
+@mixin shadow {
+  box-shadow: 23px 20px 12px -10px rgba(38, 12, 26, 0.38);
+  -webkit-box-shadow: 23px 20px 12px -10px rgba(38, 12, 26, 0.38);
+  -moz-box-shadow: 23px 20px 12px -10px rgba(38, 12, 26, 0.38);
+}

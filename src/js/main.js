@@ -14,7 +14,7 @@ const btnSave = document.getElementById("save");
 btnSave.addEventListener("click", function () {
     // Validering att inte kunna lägga tum task eller mellanspace i input med hjälp av trim()
     if (taskInput.value.trim() === '') {
-        alert("Cant add empty task");
+        alert("Can not add empty task");
     } else { // Remove text i taskInput efter task sparades och sätts i lista
         const newTask = new ToDoListTask(false, taskInput.value);
         toDoList.saveTask(newTask);
@@ -30,8 +30,8 @@ btnCancel.addEventListener("click", function () {
 toDoList.drawTasks();
 
 // function för att kunna byta mellan done icke done tasks lista
-const allTasksTrigger = document.querySelector(".to-do-app__menu-item--all-tasks");
-const doneTrigger = document.querySelector(".to-do-app__menu-item--done-tasks");
+const allTasksTrigger = document.querySelector(".to-do-app__tabs-item--all-tasks");
+const doneTrigger = document.querySelector(".to-do-app__tabs-item--done-tasks");
 
 allTasksTrigger.addEventListener("click", () => {
     toDoList.toggleActiveTab("allTasks");

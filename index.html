@@ -6,33 +6,38 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Todo or not todo?</title>
-  
+
 </head>
 
 <body>
   <div class="app" id="app">
+
     <h1 class="app__heading">To Do List</h1>
+
     <section class="to-do-app">
-      <header class="to-do-app__header">
-        <nav class="to-do-app__menu">
-          <ul class="to-do-app__menu-box">
-            <li class="to-do-app__menu-item to-do-app__menu-item--all-tasks">Tasks to do</li>
-            <li class="to-do-app__menu-item to-do-app__menu-item--done-tasks">Done Tasks</li>
-          </ul>
-        </nav>
-      </header>
-      <main class="to-do-app__main">
-        <ol class="to-do-app__list"></ol>
-      </main>
-      <form class="to-do-app__form form">
+
+      <ul class="to-do-app__tabs-box">
+        <li class="to-do-app__tabs-item to-do-app__tabs-item--all-tasks">
+          <h3>Tasks to do</h3>
+        </li>
+        <li class="to-do-app__tabs-item to-do-app__tabs-item--done-tasks">
+          <h3>Done Tasks</h3>
+        </li>
+      </ul>
+
+      <ol class="to-do-app__list"></ol>
+
+      <form class="to-do-app__form form sticky-bottom">
         <div class="form__wrapper">
           <h3 class="form__heading">Add new task:</h3>
           <input class="form__input" id="task-input" placeholder="Write your task here" type="text">
-          <button class="btn form__btn-cancel" id="cancel">Cancel</button>
-          <button class="btn form__btn-save" id="save">Save</button>
+          <button class="btn form__btn-cancel btn-secondary" id="cancel">Cancel</button>
+          <button class="btn form__btn-save btn-success" id="save">Save</button>
         </div>
       </form>
+
     </section>
+
   </div>
 
   <script type="module" src="./src/js/main.js"></script>
