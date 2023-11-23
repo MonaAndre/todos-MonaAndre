@@ -8,24 +8,25 @@ export class ToDoList {
   // constructor() { } behövs inte skriva  för att construktor finns reda från början i class
   // saveTask sparar task  genom att pusha det som kommer in i taskInput i  icke done task array "list", sparas i local storage, och visas i webbläsare
   saveTask(task) {
-    console.log("saveTask");
+    // console.log("saveTask");
     this.#list.push(task);
     this.updateLocalStorage();
     this.drawTasks();
   }
+  
   // init går in i localstorage och ritar av de som finns där i webbläsarre om det finns inget visar defaulta tasks som finns i else del
   init() {
-    console.log("init");
+    // console.log("init");
     const localList = localStorage.getItem("list");
     if (localList) {
       this.#list = JSON.parse(localList);
     } else { // skapar och sparar två tasks som ska visas från början när man oppnar app
       const taskFirst = new ToDoListTask(false, "Go on a walk with the dog");
       const taskSecond = new ToDoListTask(false, "Make To Do List App");
-      console.log(taskFirst.task);
-      console.log(this.#list);
-      console.log(this.#doneList);
-      console.log(this.#activeTab);
+      // console.log(taskFirst.task);
+      // console.log(this.#list);
+      // console.log(this.#doneList);
+      // console.log(this.#activeTab);
       this.saveTask(taskFirst);
       this.saveTask(taskSecond);
     }
@@ -35,16 +36,16 @@ export class ToDoList {
       this.#doneList = JSON.parse(doneLocalList);
     }
   }
+
   // för att kunna uppdatera isDone (done icke done tasks status) som kopplas med checkboxes och flytta task i rätt lista
   updateStatus(status, id) {
-    console.log("updateStatus");
-    console.log(status, id);
+    // console.log("updateStatus");
+    // console.log(status, id);
     if (status) {
       // debugger
       const found = this.#list.find((todo) => todo.id == id);
       found.isDone = status;
       // found.updateHtml();
-
     } else {
       const found = this.#doneList.find((todo) => todo.id == id);
       found.isDone = status;
@@ -54,19 +55,18 @@ export class ToDoList {
   }
   // method som ska uppdatera lockal storage vid ändringar
   updateLocalStorage() {
-    console.log("updateLocalStorage");
+    // console.log("updateLocalStorage");
     localStorage.setItem("list", JSON.stringify(this.#list));
     localStorage.setItem("doneList", JSON.stringify(this.#doneList));
   }
 
   moveTask() {
-    console.log("moveTask");
+    // console.log("moveTask");
     const listIndex = this.#list.findIndex((todo) => todo.isDone == true);
     const doneListIndex = this.#doneList.findIndex(
       (todo) => todo.isDone == false
     );
     //findIndex return -1 om ingen element i array har uppfult villkor övanför
-
     //när i en  false list finns task med true 
     if ((listIndex || listIndex == 0) && listIndex !== -1) {
       const doneTask = this.#list.splice(listIndex, 1)[0]; //splice retur en ny array och därför måste man ta det som står på index 0 och få bara object utan extra array
@@ -104,9 +104,9 @@ export class ToDoList {
   }
 
   drawTasks() {
-    console.log("drawTasks");
-    console.log("donelist", this.#doneList);
-    console.log("activTab", this.#activeTab);
+    // console.log("drawTasks");
+    // console.log("donelist", this.#doneList);
+    // console.log("activTab", this.#activeTab);
     const listHtml = document.querySelector(".to-do-app__list"); // ritar av html varje gång baserat på array
     if (this.#activeTab == "allTasks" && this.#list.length) {
       listHtml.innerHTML = "";
@@ -125,21 +125,21 @@ export class ToDoList {
         listItem.classList.add("list-item", "to-do-app__list-item");
         listItem.innerHTML = this.#doneList[i].html;
         listHtml.appendChild(listItem);
-
       }
     } else {
       listHtml.innerHTML = "It's empty here! Make some tasks done or add new task to do";
     }
     this.addEvents();
   }
+
   // att kolla efter checked/ unchecked status av checkbox(change event) och kunna göra uppdateStatus
   addEvents() {
-    console.log("addEvents");
+    // console.log("addEvents");
     const checkboxes = document.querySelectorAll(
       ".list-item__checkbox"
     );
     if (checkboxes && checkboxes.length) {
-      console.log(checkboxes);
+      // console.log(checkboxes);
       checkboxes.forEach((checkbox) => { //e.target blir själva checkbox
         checkbox.addEventListener("change", (e) => {
           const todoId = e.target.parentElement.id;
@@ -179,10 +179,9 @@ export class ToDoList {
     this.drawTasks();
   }
 
-
   // method som ska spara nu läget för task efter man flyttat på den i webbrowser
   updateTaskPosition(taskId) {
-    console.log("updateTaskPosition func");
+    // console.log("updateTaskPosition func");
     const allTasks = document.querySelectorAll(".to-do-app__list-item");
     let taskMoveIndex;
     allTasks.forEach((task, taskIndex) => {
@@ -209,5 +208,4 @@ export class ToDoList {
       this.updateLocalStorage();
     }
   }
-
 }

@@ -88,7 +88,7 @@ body {
       transform: scale(1.1);
     }
     &__tabs-item:active {
-      transform: scale(0.95); 
+      transform: scale(0.95);
     }
 
     &__list {
@@ -178,11 +178,15 @@ body {
     }
   }
 }
-
-.list-item__text {
-  max-width: 45vw;
-  @include tablet() {
-    max-width: 75rem;
+.list-item {
+  &__text {
+    max-width: 45vw;
+    @include tablet() {
+      max-width: 75rem;
+    }
+  }
+  &__checkbox {
+    cursor: pointer;
   }
 }
 

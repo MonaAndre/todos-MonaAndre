@@ -4,12 +4,8 @@ import { ToDoListTask } from "./models/ToDoListTask";
 import "./dragula";
 import drake from "./dragula";
 
-
-
 const toDoList = new ToDoList();
-
 toDoList.init();
-// skapa menu items i menu list för att kunna byta listor mellan done och icke done tasks listor
 
 // för att kunna lägga till nya tasks men isDone:false från början 
 const taskInput = document.getElementById("task-input");
@@ -49,7 +45,7 @@ doneTrigger.addEventListener("click", () => {
 
 //  event dragent listener el händelse drake.on
 drake.on("dragend", (el) => {
-    console.log(el.id);
+    // console.log(el.id);
     toDoList.updateTaskPosition(el.id); 
 });
 
