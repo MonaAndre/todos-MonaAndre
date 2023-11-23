@@ -1,10 +1,11 @@
 import { ToDoListTask } from "./ToDoListTask";
+import "../dragula";
 export class ToDoList {
   // sätter # innan variable namn för att göra en variabel privat som ska inte synnas utanför class i utterliggande kod
   #list = [];
   #doneList = [];
   #activeTab = "allTasks";
-  // constructor() { } behövs inte skriva  för att construktor finns reda för början i class
+  // constructor() { } behövs inte skriva  för att construktor finns reda från början i class
   // saveTask sparar task  genom att pusha det som kommer in i taskInput i  icke done task array "list", sparas i local storage, och visas i webbläsare
   saveTask(task) {
     console.log("saveTask");
@@ -82,11 +83,9 @@ export class ToDoList {
   }
   // om man trycker två gångar på samma menu-item lista ändras ändå ,ska ändra? extra if för att dubbelkolla om man har redan tryckt på en activ tab 
   toggleActiveTab(newActiveTab) {
-
     if (newActiveTab == this.#activeTab) return;
     this.#activeTab = newActiveTab;
   }
-
 
   //uppdatera html hos en ändrat task. Ändrar bara checked eller inte checked
   updateHtml(task) {
@@ -178,6 +177,37 @@ export class ToDoList {
     }
     this.updateLocalStorage();
     this.drawTasks();
+  }
+
+
+  // method som ska spara nu läget för task efter man flyttat på den i webbrowser
+  updateTaskPosition(taskId) {
+    console.log("updateTaskPosition func");
+    const allTasks = document.querySelectorAll(".to-do-app__list-item");
+    let taskMoveIndex;
+    allTasks.forEach((task, taskIndex) => {
+      if (task.id === taskId) {
+        taskMoveIndex = taskIndex;
+        return
+      }
+    });
+    const taskMoveInList = this.#list.find((task) => task.id == taskId);
+    const doneTaskMoveInList = this.#doneList.find((doneTask) => doneTask.id == taskId);
+    if (taskMoveInList) { // går in här om task som flyttades va i list
+      const taskIndexMoveInList = this.#list.findIndex(
+        (task) => task.id == taskId
+      );
+      this.#list.splice(taskIndexMoveInList, 1);
+      this.#list.splice(taskMoveIndex, 0, taskMoveInList);
+      this.updateLocalStorage();
+    } else if (doneTaskMoveInList) { // elsee om taske flyttades i doneList (doneTask)
+      const doneTaskIndexMoveInList = this.#doneList.findIndex(
+        (doneTask) => doneTask.id == taskId
+      );
+      this.#doneList.splice(doneTaskIndexMoveInList, 1);
+      this.#doneList.splice(taskMoveIndex, 0, doneTaskMoveInList);
+      this.updateLocalStorage();
+    }
   }
 
 }

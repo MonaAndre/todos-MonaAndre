@@ -9,7 +9,7 @@ export class ToDoListTask {
         <i class="bi bi-trash list-item__button--delete"></i>`;
     }
 }
-//isDone som ska visas i checkbox i webbläsare
+//isDone som ska kopplas med checkbox i webbläsare
 //task text
 //varje task ska få unik id med hjälp av Date.now
 //html för att kunna drawTask
