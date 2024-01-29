@@ -1,0 +1,30 @@
+// Mixins
+@mixin box-sizing {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+@mixin tablet {
+  @media screen and (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+    @media screen and (min-width: $breakpoint-large-desktop) {
+      @content;
+    }
+  }
+
+@mixin shadow {
+  box-shadow: 23px 20px 12px -10px rgba(38, 12, 26, 0.38);
+  -webkit-box-shadow: 23px 20px 12px -10px rgba(38, 12, 26, 0.38);
+  -moz-box-shadow: 23px 20px 12px -10px rgba(38, 12, 26, 0.38);
+}
