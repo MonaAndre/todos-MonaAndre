@@ -13,7 +13,7 @@ export class ToDoList {
     this.updateLocalStorage();
     this.drawTasks();
   }
-  
+
   // init går in i localstorage och ritar av de som finns där i webbläsarre om det finns inget visar defaulta tasks som finns i else del
   init() {
     // console.log("init");
@@ -156,7 +156,7 @@ export class ToDoList {
         deleteBtn.addEventListener("click", (e) => {
           console.log("pushed btn");
           const todoId = e.target.parentElement.id;
-          this.removeTodoById(todoId)
+          this.removeTodoById(todoId);
         });
       });
     }
